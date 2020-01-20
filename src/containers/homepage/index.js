@@ -1,46 +1,59 @@
-import React from 'react';
+import React from "react";
 
-import './styles.scss';
+import CollectionList from "../../components/collectionList/collectionList";
+
+import "./styles.scss";
 
 class HomePage extends React.Component {
-    render () {
-        return (
-            <div className="homepage">
-                <div className="menu">
-                    <div className="item-box">
-                        <div className="item-content">
-                            <h1 className="title">Hats</h1>
-                            <div className="sub-title">Shop Now</div>
-                        </div>
-                    </div>
-                    <div className="item-box">
-                        <div className="item-content">
-                            <h1 className="title">Jackets</h1>
-                            <div className="sub-title">Shop Now</div>
-                        </div>
-                    </div>
-                    <div className="item-box">
-                        <div className="item-content">
-                            <h1 className="title">Sneakers</h1>
-                            <div className="sub-title">Shop Now</div>
-                        </div>
-                    </div>
-                    <div className="item-box">
-                        <div className="item-content">
-                            <h1 className="title">Women</h1>
-                            <div className="sub-title">Shop Now</div>
-                        </div>
-                    </div>
-                    <div className="item-box">
-                        <div className="item-content">
-                            <h1 className="title">Men</h1>
-                            <div className="sub-title">Shop Now</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      collectionTypes: [
+        {
+          title: "hats",
+          imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
+          id: 1,
+          linkUrl: "shop/hats"
+        },
+        {
+          title: "jackets",
+          imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+          id: 2,
+          linkUrl: "shop/jackets"
+        },
+        {
+          title: "sneakers",
+          imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
+          id: 3,
+          linkUrl: "shop/sneakers"
+        },
+        {
+          title: "womens",
+          imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
+          size: "large",
+          id: 4,
+          linkUrl: "shop/womens"
+        },
+        {
+          title: "mens",
+          imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
+          size: "large",
+          id: 5,
+          linkUrl: "shop/mens"
+        }
+      ]
+    };
+  }
+
+  render() {
+    const { collectionTypes } = this.state;
+    return (
+      <div className="homepage">
+        <CollectionList collectionTypes={collectionTypes} />
+      </div>
+    );
+  }
 }
 
 export default HomePage;
