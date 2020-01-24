@@ -1,17 +1,17 @@
 import React from 'react';
 
-import CollectionItem from '../collectionItem/CollectionItem';
+import HomepageItem from '../homepageItem/homepageItem';
 
 import './styles.scss';
 
-const CollectionList = (props) => {
+const HomepageList = (props) => {
     const { collectionTypes } = props;
     return (
         <div className="collections">
             {
                 collectionTypes && collectionTypes.map((collection) => {
                     return (
-                        <CollectionItem 
+                        <HomepageItem 
                             key={collection.id}
                             collection={collection}
                             subTitle={`Shop Now`}
@@ -23,4 +23,4 @@ const CollectionList = (props) => {
     );
 }
 
-export default CollectionList;
+export default HomepageList;
