@@ -1,6 +1,9 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
 
+import SignIn from "./containers/signIn";
+
+import Header from "./components/header/header";
 import HomePage from "./containers/homepage";
 import Shop from "./containers/shop";
 
@@ -29,9 +32,15 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/shop" component={Shop} />
-        <Route exact path="/shop/women" component={Women} />
+        <Header />
+        <div className="app-body">
+          <Route exact path="/" component={HomePage} />
+
+          <Route exact path="/signIn" component={SignIn} />
+
+          <Route exact path="/shop" component={Shop} />
+          <Route exact path="/shop/women" component={Women} />
+        </div>
       </React.Fragment>
     );
   }

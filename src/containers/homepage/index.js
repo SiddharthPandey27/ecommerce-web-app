@@ -53,7 +53,7 @@ class HomePage extends React.Component {
       <div className="homepage">
         <HomepageList collectionTypes={collectionTypes} />
         <Link to={`/shop`}>
-          <h1>Shop</h1>
+          <h1>Enter the Shop > </h1>
         </Link>
       </div>
     );
