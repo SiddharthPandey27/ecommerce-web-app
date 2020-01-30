@@ -19,4 +19,14 @@
         color: #000;
         border: 1px solid #000;
     }
+
+    &.blue-button {
+        background-color: #4280f4;
+    
+        &:hover {
+            background-color: #fff;
+            color: #4280f4;
+            border: 1px solid #4280f4;
+        }
+    }
 }

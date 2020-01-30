@@ -1,6 +1,8 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
 
+import { auth } from './firebase/firebase';
+
 import SignIn from "./containers/signIn";
 
 import Header from "./components/header/header";
@@ -29,10 +31,38 @@ const WomenProduct = props => {
 };
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currentUser: null
+    };
+  }
+
+  unsubscribeFromAuth = null;
+
+  componentDidMount() {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+      this.setState({
+        currentUser: user
+      });
+
+      console.log(user);
+    })
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
+    console.log("Unsubscribe");
+  }
+
   render() {
+    const { currentUser } = this.state;
     return (
       <React.Fragment>
-        <Header />
+        <Header 
+          currentUser={currentUser}
+        />
         <div className="app-body">
           <Route exact path="/" component={HomePage} />
 
