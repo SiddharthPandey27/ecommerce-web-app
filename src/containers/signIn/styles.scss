@@ -1,5 +1,14 @@
-.sign-in-container {
-    width: 30vw;
+.sign-in-sign-up-container {
+    width: 70vw;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    margin: 30px auto;
+
+    .sign-in-box {
+        width: 30vw;
+    }
+
+    .sign-up-box {
+        width: 30vw;
+    }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
 
-import { auth } from './firebase/firebase';
+import { auth, createUserProfileDoc } from "./firebase/firebase";
 
 import SignIn from "./containers/signIn";
 
@@ -42,13 +42,27 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({
-        currentUser: user
-      });
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDoc(userAuth);
+        console.log("user auth", userAuth);
 
-      console.log(user);
-    })
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          });
+
+          console.log("State of App", this.state);
+        });
+      }
+
+      this.setState({
+        currentUser: userAuth
+      });
+    });
   }
 
   componentWillUnmount() {
@@ -60,9 +74,7 @@ class App extends React.Component {
     const { currentUser } = this.state;
     return (
       <React.Fragment>
-        <Header 
-          currentUser={currentUser}
-        />
+        <Header currentUser={currentUser} />
         <div className="app-body">
           <Route exact path="/" component={HomePage} />
 
