@@ -28,7 +28,7 @@ const Header = ({ currentUser }) => {
                 Sign Out
               </div>)
             :
-              (<Link to="/signin" className="header-tab">
+              (<Link to="/signIn" className="header-tab">
                 Sign In
               </Link>)
           }
