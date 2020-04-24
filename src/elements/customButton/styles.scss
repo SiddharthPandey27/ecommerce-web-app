@@ -13,6 +13,8 @@
     font-weight: bolder;
     cursor: pointer;
     border: none;
+    display: flex;
+    justify-content: center;
     
     &:hover {
         background-color: #fff;
@@ -27,6 +29,18 @@
             background-color: #fff;
             color: #4280f4;
             border: 1px solid #4280f4;
+        }
+    }
+    
+    &.cart {
+        background-color: #fff;
+        color: #000;
+        border: 1px solid #000;
+
+        &:hover {
+            background-color: #000;
+            color: #fff;
+            border: none;
         }
     }
 }
